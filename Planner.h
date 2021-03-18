@@ -6,13 +6,16 @@
 #define POO_LABORATOR_PLANNER_H
 
 #include <string>
+#include <ostream>
 
 class Planner {
 private:
-    std::string nume, stare;
+    std::string nume;
 public:
-    explicit Planner(std::string &nume);
+    explicit Planner(const std::string &nume);
+    std::string getter_nume();
     virtual ~Planner();
+    friend std::ostream &operator<<(std::ostream &os, const Planner &planner);
 };
 
 

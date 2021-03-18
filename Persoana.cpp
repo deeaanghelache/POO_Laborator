@@ -6,12 +6,19 @@
 #include "Persoana.h"
 #include <string>
 
-Persoana::Persoana(const std::string &nume) {
-    this->nume=nume;
-}
+Persoana::Persoana(const std::string &nume) : nume(nume) {}
 
 Persoana::~Persoana() {
-    std::cout << "destructor persoana " + nume + "\n";
+    std::cout << "destructor persoana " + nume + " \n";
+}
+
+std::ostream &operator<<(std::ostream &os, const Persoana &pers) {
+    os << "Nume: " << pers.nume << "\n";
+    return os;
+}
+
+std::string Persoana::getter_nume() {
+    return nume;
 }
 
 
