@@ -7,14 +7,16 @@
 
 #include <string>
 #include <ostream>
+#include "Planner.h"
 
 class Persoana {
     private:
         std::string nume;
-
+        Planner planner;
     public:
-        explicit Persoana(const std::string &nume);
+        explicit Persoana(const std::string &nume, const Planner& planner);
         std::string getter_nume();
+        void setter_nume(const std::string& n);
         virtual ~Persoana();
         friend std::ostream &operator<<(std::ostream &os, const Persoana &pers);
 };
