@@ -26,7 +26,9 @@ public:
     void setter_nume(const std::string& n);
     void setter_data(const std::string& d);
     void remove_task(Task &tsk);
-    std::vector<Task> getter_vector();
+    void remove_tracker(Tracker &track);
+    std::vector<Task> getter_tasks();
+    std::vector<Tracker> getter_tracks();
     friend bool operator==(const Lista &lst1, const Lista &lst2);  //verifica daca 2 obiecte de tip lista sunt egale
     friend std::ostream &operator<<(std::ostream &os, const Lista &lst);
     virtual ~Lista();

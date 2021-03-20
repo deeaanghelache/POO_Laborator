@@ -22,6 +22,8 @@ private:
 public:
     explicit Planner(const std::string &nume);
     std::string getter_nume();
+    std::vector<Lista> getter_liste();
+    std::vector<Backlog> getter_backlogs();
     void add_lista(const Lista &ToDoList);
     void add_backlog(const Backlog &backl);
     void setter_nume(const std::string& n);

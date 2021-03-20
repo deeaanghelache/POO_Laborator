@@ -35,7 +35,7 @@ std::string Lista::getter_data() {
     return data;
 }
 
-std::vector<Task> Lista::getter_vector() {
+std::vector<Task> Lista::getter_tasks() {
     return Taskuri;
 }
 
@@ -77,6 +77,19 @@ bool operator==(const Lista &lst1, const Lista &lst2) {
     if (lst1.nume==lst2.nume && lst2.data==lst1.data && ok1 == 1 && ok2 == 1)
         return true;
     return false;
+}
+
+void Lista::remove_tracker(Tracker &track) {
+    for(auto i=tracks.begin(); i != tracks.end(); ++i)
+        if(operator==(track, *i))
+        {
+            tracks.erase(i);
+            break;
+        }
+}
+
+std::vector<Tracker> Lista::getter_tracks() {
+    return tracks;
 }
 
 

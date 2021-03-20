@@ -58,3 +58,11 @@ void Planner::remove_backlog(Backlog &backl) {
         }
 }
 
+std::vector<Lista> Planner::getter_liste() {
+    return Liste;
+}
+
+std::vector<Backlog> Planner::getter_backlogs() {
+    return Backlogs;
+}
+
