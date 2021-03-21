@@ -8,9 +8,10 @@
 
 Persoana::Persoana(const std::string &nume, const Planner& planner) : nume(nume), planner(planner) {}
 
-Persoana::~Persoana() {
-    std::cout << "destructor persoana " + nume + " \n";
-}
+Persoana::~Persoana()=default;
+//{
+//    std::cout << "destructor persoana " + nume + " \n";
+//}
 
 std::ostream &operator<<(std::ostream &os, const Persoana &pers) {
     os << "Nume persoana: " << pers.nume << "\n" << pers.planner << "\n";

@@ -19,8 +19,7 @@ public:
     std::string getter_stare();
     void setter_nume(const std::string& n);
     void setter_stare(const std::string& s);
-    static void change_status_to_yes(std::string &stare);
-//    int operator==(const Task &tsk1);
+    static void change_status_to_yes(Task &tsk);;
     friend bool operator==(const Task &tsk1, const Task &tsk2);
     friend std::ostream &operator<<(std::ostream &os, const Task &tsk);
     virtual ~Task();

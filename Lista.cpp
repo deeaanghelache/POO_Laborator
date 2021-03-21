@@ -9,12 +9,13 @@
 
 Lista::Lista(const std::string &nume, const std::string &data) : nume(nume), data(data) {}
 
-Lista::~Lista() {
-    std::cout << "destructor lista " + nume +"\n";
-}
+Lista::~Lista()=default;
+//{
+//    std::cout << "destructor lista " + nume +"\n";
+//}
 
 std::ostream &operator<<(std::ostream &os, const Lista &lst) {
-    os << "\t\t\tNume: " << lst.nume << " " << "Date: " << lst.data << "\n"<<"\n";
+    os << "\t\t\tNume: " << lst.nume << " " << "Data: " << lst.data << "\n"<<"\n";
     for(auto &tsk : lst.Taskuri)
         os<<" "<<tsk;
     os<<"\n";

@@ -15,9 +15,10 @@ Task::Task(const Task &tsk) {
 //    std::cout<<"cc"<<nume<<"\n";
 }
 
-Task::~Task() {
-    std::cout << "destructor task " + nume + "\n";
-}
+Task::~Task()=default;
+//{
+//    std::cout << "destructor task " + nume + "\n";
+//}
 
 std::ostream &operator<<(std::ostream &os, const Task &tsk) {
     os << "\t\t\t\tNume Task: " << tsk.nume << " " << "Stare Task: " << tsk.stare << "\n";
@@ -29,7 +30,7 @@ Task &Task::operator=(const Task &tsk) {
         nume=tsk.nume;
         stare=tsk.stare;
     }
-    std::cout<<"op= task "<<nume<<"\n";
+//    std::cout<<"op= task "<<nume<<"\n";
     return *this;
 }
 
@@ -55,8 +56,8 @@ bool operator==(const Task &tsk1, const Task &tsk2) {
     return false;
 }
 
-void Task::change_status_to_yes(std::string &stare) {
-    stare = "yes";
+void Task::change_status_to_yes(Task &tsk) {
+    tsk.stare = "yes";
 }
 
 

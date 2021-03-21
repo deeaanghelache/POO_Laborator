@@ -8,10 +8,10 @@
 
 Planner::Planner(const std::string &nume) : nume(nume) {}
 
-Planner::~Planner()
-{
-    std::cout << "destructor planner " + nume + " \n";
-}
+Planner::~Planner()=default;
+//{
+//    std::cout << "destructor planner " + nume + " \n";
+//}
 
 std::ostream &operator<<(std::ostream &os, const Planner &planner) {
     os << "\tNume Planner: " << planner.nume << "\n";

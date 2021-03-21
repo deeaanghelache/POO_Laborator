@@ -5,9 +5,10 @@
 #include <iostream>
 #include "Backlog.h"
 
-Backlog::~Backlog() {
-    std::cout << "destructor backlog " + nume + "\n";
-}
+Backlog::~Backlog()=default;
+//{
+//    std::cout << "destructor backlog " + nume + "\n";
+//}
 
 Backlog::Backlog(const std::string &nume, const std::string &data_limita) : nume(nume), data_limita(data_limita) {}
 
