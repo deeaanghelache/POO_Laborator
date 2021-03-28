@@ -69,7 +69,8 @@ int main()
             planner_1.add_backlog(backlog1);
             Persoana persoana_1(pers.first, planner_1);
 
-            operator<<(std::cout, persoana_1);
+//            operator<<(std::cout, persoana_1);
+            std::cout<<persoana_1;
 
             std::cout<<"\n";
         }
