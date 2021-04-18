@@ -17,10 +17,10 @@ std::ostream &operator<<(std::ostream &os, const Planner &planner) {
     os << "\tNume Planner: " << planner.nume << "\n";
     os<<"\t\tToDoLists:\n";
     for(auto &lst : planner.Liste)
-        os<<" "<<lst;
+        os<<" "<<*lst;
     os << "\n\t\tBacklogs:\n";
     for(auto &bckl : planner.Backlogs)
-        os<<" "<<bckl;
+        os<<" "<<*bckl;
     return os;
 }
 
@@ -32,15 +32,15 @@ void Planner::setter_nume(const std::string &n) {
     nume = n;
 }
 
-void Planner::add_lista(const Lista &ToDoList) {
+void Planner::add_lista(const std::shared_ptr<Lista> &ToDoList) {
     Liste.push_back(ToDoList);
 }
 
-void Planner::add_backlog(const Backlog &backl) {
+void Planner::add_backlog(const std::shared_ptr<Backlog> &backl) {
     Backlogs.push_back(backl);
 }
 
-void Planner::remove_lista(Lista &ToDoList) {
+void Planner::remove_lista(std::shared_ptr<Lista> &ToDoList) {
     for(auto i=Liste.begin(); i != Liste.end(); ++i)
         if(operator==(ToDoList, *i))
         {
@@ -49,7 +49,7 @@ void Planner::remove_lista(Lista &ToDoList) {
         }
 }
 
-void Planner::remove_backlog(Backlog &backl) {
+void Planner::remove_backlog(std::shared_ptr<Backlog> &backl) {
     for(auto i=Backlogs.begin(); i != Backlogs.end(); ++i)
         if(operator==(backl, *i))
         {
@@ -58,11 +58,11 @@ void Planner::remove_backlog(Backlog &backl) {
         }
 }
 
-std::vector<Lista> Planner::getter_liste() {
+std::vector<std::shared_ptr<Lista>> Planner::getter_liste() {
     return Liste;
 }
 
-std::vector<Backlog> Planner::getter_backlogs() {
+std::vector<std::shared_ptr<Backlog>> Planner::getter_backlogs() {
     return Backlogs;
 }
 

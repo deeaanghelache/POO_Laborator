@@ -12,10 +12,10 @@ Tracker::~Tracker()=default;
 //    std::cout << "destructor tracker " + nume + " \n";
 //}
 
-std::ostream &operator<<(std::ostream &os, const Tracker &tracker) {
-    os << "\t\t\t\tNume Tracker: " << tracker.nume << " " << "Stare Tracker: " << tracker.stare << "\n";
-    return os;
-}
+//std::ostream &operator<<(std::ostream &os, const Tracker &tracker) {
+//    os << "\t\t\t\tNume Tracker: " << tracker.nume << " " << "Stare Tracker: " << tracker.stare << "\n";
+//    return os;
+//}
 
 std::string Tracker::getter_nume() {
     return nume;

@@ -7,26 +7,29 @@
 #include <iostream>
 #include "Lista.h"
 
-Lista::Lista(const std::string &nume, const std::string &data) : nume(nume), data(data) {}
+Lista::Lista(const std::string &nume, const std::string &data, ReadingTracker &rt, MoodTracker &md) : nume(nume), data(data), rt(rt), md(md){}
 
 Lista::~Lista()=default;
 //{
 //    std::cout << "destructor lista " + nume +"\n";
 //}
 
-std::ostream &operator<<(std::ostream &os, const Lista &lst) {
+std::ostream &operator<<(std::ostream &os, Lista &lst) {
     os << "\t\t\tNume: " << lst.nume << " " << "Data: " << lst.data << "\n"<<"\n";
     for(auto &tsk : lst.Taskuri)
-        os<<" "<<tsk;
+        os<<" "<<*tsk;
     os<<"\n";
-    for(auto &tracks : lst.tracks)
-        os<<" "<<tracks;
+//    for(auto &tracks : lst.tracks)
+//        os<<" "<<tracks;
+
+    os<<lst.rt<<"\n"<<lst.md<<"\n";
+
     return os;
 }
 
-void Lista::add_task(const Task &tsk) {
-    Taskuri.push_back(tsk);
-}
+//void add_task(const std::unique_ptr<Task> &tsk) {
+//    Taskuri.push_back(tsk);
+//}
 
 std::string Lista::getter_nume() {
     return nume;
@@ -36,7 +39,7 @@ std::string Lista::getter_data() {
     return data;
 }
 
-std::vector<Task> Lista::getter_tasks() {
+std::vector<std::shared_ptr<Task>> Lista::getter_tasks() {
     return Taskuri;
 }
 
@@ -48,8 +51,9 @@ void Lista::setter_data(const std::string &d) {
     data = d;
 }
 
+// ???????????????????????????????????????????????????????????????????????????????
 
-void Lista::remove_task(Task &tsk) {
+void Lista::remove_task(std::shared_ptr<Task> &tsk) {
     for(auto i=Taskuri.begin(); i != Taskuri.end(); ++i)
         if(operator==(tsk, *i))
         {
@@ -58,40 +62,60 @@ void Lista::remove_task(Task &tsk) {
         }
 }
 
-void Lista::add_trackers(const Tracker &track) {
-    tracks.push_back(track);
-}
-
-//operator== pentru liste
+// operator== pentru liste
 
 bool operator==(const Lista &lst1, const Lista &lst2) {
-    int ok1=0, ok2=0;
-    if ((lst1.tracks.size() != lst2.tracks.size()) || (lst1.Taskuri.size() != lst2.Taskuri.size()))
+    int ok1=0;
+
+    if(lst1.Taskuri.size() != lst2.Taskuri.size())
         return false;
 
-    if (lst1.tracks == lst2.tracks)
+    if (lst1.Taskuri == lst2.Taskuri)
         ok1=1;
 
-    if (lst1.Taskuri == lst2.Taskuri)
-        ok2=1;
-
-    if (lst1.nume==lst2.nume && lst2.data==lst1.data && ok1 == 1 && ok2 == 1)
+    if (lst1.nume==lst2.nume && lst2.data==lst1.data && ok1 == 1)
         return true;
     return false;
 }
 
-void Lista::remove_tracker(Tracker &track) {
-    for(auto i=tracks.begin(); i != tracks.end(); ++i)
-        if(operator==(track, *i))
-        {
-            tracks.erase(i);
-            break;
-        }
+void Lista::add_task(const std::shared_ptr<Task> &tsk) {
+    Taskuri.push_back(tsk);
 }
 
-std::vector<Tracker> Lista::getter_tracks() {
-    return tracks;
+std::optional<ReadingTracker> Lista::getter_rt() {
+    return rt;
 }
+
+std::optional<MoodTracker> Lista::getter_md() {
+    return md;
+}
+
+void Lista::setter_rt(ReadingTracker &rt1) {
+    rt = rt1;
+}
+
+void Lista::setter_md(MoodTracker &md1) {
+    md = md1;
+}
+
+//Lista::Lista(const std::unique_ptr<Lista> &lista) {
+//    nume=lista->nume;
+//    data=lista->data;
+//    Taskuri=lista->Taskuri;
+//}
+
+//void Lista::remove_tracker(Tracker &track) {
+//    for(auto i=tracks.begin(); i != tracks.end(); ++i)
+//        if(operator==(track, *i))
+//        {
+//            tracks.erase(i);
+//            break;
+//        }
+//}
+//
+//std::vector<Tracker> Lista::getter_tracks() {
+//    return tracks;
+//}
 
 
 

@@ -9,9 +9,9 @@ Task::Task(const std::string &nume, const std::string &stare) : nume(nume), star
 
 
 // Constructor de copiere
-Task::Task(const Task &tsk) {
-    nume=tsk.nume;
-    stare=tsk.stare;
+Task::Task(const std::shared_ptr<Task> &tsk) {
+    nume=tsk->nume;
+    stare=tsk->stare;
 //    std::cout<<"cc"<<nume<<"\n";
 }
 
@@ -56,8 +56,8 @@ bool operator==(const Task &tsk1, const Task &tsk2) {
     return false;
 }
 
-void Task::change_status_to_yes(Task &tsk) {
-    tsk.stare = "yes";
-}
+//void Task::change_status_to_yes(Task &tsk) {
+//    tsk.stare = "yes";
+//}
 
 

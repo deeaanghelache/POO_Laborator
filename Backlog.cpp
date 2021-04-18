@@ -16,7 +16,7 @@ std::ostream &operator<<(std::ostream &os, const Backlog &bkl)
 {
     os << "\t\t\tNume Backlog: " << bkl.nume << " " << "Data limita: " << bkl.data_limita << "\n";
     for(auto &tsk : bkl.TaskuriNeplanificate)
-        os<<" "<<tsk;
+        os<<" "<<*tsk;
     return os;
 }
 
@@ -28,11 +28,11 @@ std::string Backlog::getter_dataLimita() {
     return data_limita;
 }
 
-std::vector<Task> Backlog::getter_vector() {
+std::vector<std::shared_ptr<Task>> Backlog::getter_vector() {
     return TaskuriNeplanificate;
 }
 
-void Backlog::add_task(const Task &tsk) {
+void Backlog::add_task(const std::shared_ptr<Task> &tsk) {
     TaskuriNeplanificate.push_back(tsk);
 }
 
@@ -44,7 +44,7 @@ void Backlog::setter_dataLimita(const std::string& dl) {
     data_limita = dl;
 }
 
-void Backlog::remove_task(const Task &tsk) {
+void Backlog::remove_task(const std::shared_ptr<Task> &tsk) {
     for(auto i=TaskuriNeplanificate.begin(); i != TaskuriNeplanificate.end(); ++i)
         if(operator==(tsk, *i))
         {
