@@ -12,20 +12,31 @@
 #include "numar_negativ_pagini.h"
 
 std::ifstream Persoane("Persoane.in");
-std::string nume, nume_planner;
-std::unordered_map<std::string, std::string> PeoplePlanners;
 
-void citire_persoane(){
+std::unordered_map<std::string, std::string> citire_persoane(){
+    std::string nume, nume_planner;
+    std::unordered_map<std::string, std::string> PeoplePlanners;
     while(std::getline(Persoane, nume))
     {
         std::getline(Persoane, nume_planner);
         PeoplePlanners.insert({nume, nume_planner});
     }
+    return PeoplePlanners;
+}
+
+void try_catch_pagini(ReadingTracker &rt)
+{
+    try{
+        ReadingTracker::verifica_pagini(rt);
+    }
+    catch(std::exception &err) {
+        std::cout << "in catch: " << err.what() << "\n";
+    }
 }
 
 int main()
 {
-    citire_persoane();
+    auto PeoplePlanners = citire_persoane();
 
     int crt=0;
     for (const auto& pers : PeoplePlanners)
@@ -41,7 +52,7 @@ int main()
         {
             Planner planner_1(pers.second);
 
-            std::shared_ptr<Task> task1 = std::make_shared<Task>("Tema Mate", "yes");
+            std::shared_ptr<Task> task1 = std::make_shared<Task>("Tema Mate", "no");
             std::shared_ptr<Task> task2 = std::make_shared<Task>("Tema Romana", "no");
             std::shared_ptr<Task> task3 = std::make_shared<Task>("Proiect Engleza", "no");
             ReadingTracker rt2("nume2", "star2e", 1001);
@@ -61,12 +72,14 @@ int main()
             ReadingTracker rt1("nume", "stare", -100);
             MoodTracker md1("nume", "stare");
 
-            try{
-                ReadingTracker::verifica_pagini(rt1);
-            }
-            catch(std::exception &err) {
-                std::cout << "in catch: " << err.what() << "\n";
-            }
+            try_catch_pagini(rt1);
+
+//            try{
+//                ReadingTracker::verifica_pagini(rt1);
+//            }
+//            catch(std::exception &err) {
+//                std::cout << "in catch: " << err.what() << "\n";
+//            }
 
             std::shared_ptr<Lista> ToDoList2 = std::make_shared<Lista>("To Do", "16.01.2021", rt1, md1);
 

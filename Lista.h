@@ -41,7 +41,7 @@ public:
     std::vector<std::shared_ptr<Task>> getter_tasks();
 //    std::vector<Tracker> getter_tracks();
     friend bool operator==(const Lista &lst1, const Lista &lst2);  //verifica daca 2 obiecte de tip lista sunt egale
-    friend std::ostream &operator<<(std::ostream &os, Lista &lst);
+    friend std::ostream &operator<<(std::ostream &os, const Lista &lst);
     virtual ~Lista();
 
 };

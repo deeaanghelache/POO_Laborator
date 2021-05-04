@@ -12,8 +12,8 @@ class Task {
 private:
     std::string nume, stare;
 public:
-    Task(const std::string &nume, const std::string &stare);
-    Task(const std::shared_ptr<Task> &tsk);
+    explicit Task(const std::string &nume, const std::string &stare="no");
+    explicit Task(const std::shared_ptr<Task> &tsk);
     Task &operator=(const Task &tsk);
     std::string getter_nume();
     std::string getter_stare();
