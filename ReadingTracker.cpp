@@ -34,7 +34,7 @@ int ReadingTracker::getter_pagini() {
     return nr_pagini;
 }
 
-void ReadingTracker::verifica_pagini(ReadingTracker &rt) {
-    if (rt.getter_pagini() < 0)
-        throw numar_negativ_pagini(rt.getter_pagini());
+void ReadingTracker::verifica_pagini() {
+    if (this->getter_pagini() < 0)
+        throw numar_negativ_pagini(this->getter_pagini());
 }

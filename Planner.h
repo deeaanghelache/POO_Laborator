@@ -9,6 +9,7 @@
 
 #include <string>
 #include <ostream>
+#include <memory>
 #include "Lista.h"
 #include "Backlog.h"
 

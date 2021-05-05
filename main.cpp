@@ -1,5 +1,6 @@
 #include <iostream>
 #include <fstream>
+#include <memory>
 #include <unordered_map>
 #include "Persoana.h"
 #include "Lista.h"
@@ -27,7 +28,7 @@ std::unordered_map<std::string, std::string> citire_persoane(){
 void try_catch_pagini(ReadingTracker &rt)
 {
     try{
-        ReadingTracker::verifica_pagini(rt);
+        rt.verifica_pagini();
     }
     catch(std::exception &err) {
         std::cout << "in catch: " << err.what() << "\n";

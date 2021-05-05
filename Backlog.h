@@ -8,6 +8,7 @@
 #include <string>
 #include <ostream>
 #include <vector>
+#include <memory>
 #include "Task.h"
 
 class Backlog {

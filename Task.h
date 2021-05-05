@@ -7,6 +7,7 @@
 
 #include <string>
 #include <ostream>
+#include <memory>
 
 class Task {
 private:

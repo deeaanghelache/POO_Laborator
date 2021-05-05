@@ -16,7 +16,7 @@ public:
     void setter_stare(const std::string& s) override;
     void setter_pagini(int& pagini);
     int getter_pagini();
-    static void verifica_pagini(ReadingTracker& rt);
+    void verifica_pagini();
     friend std::ostream &operator<<(std::ostream &os, const ReadingTracker &rt);
 };
 
