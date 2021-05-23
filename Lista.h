@@ -37,6 +37,7 @@ public:
     void setter_rt(ReadingTracker& rt1);
     void setter_md(MoodTracker& md1);
     void remove_task(std::shared_ptr<Task> &tsk);
+    void progres(Tracker &tr);
 //    void remove_tracker(Tracker &track);
     std::vector<std::shared_ptr<Task>> getter_tasks();
 //    std::vector<Tracker> getter_tracks();

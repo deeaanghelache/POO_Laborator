@@ -38,3 +38,7 @@ void ReadingTracker::verifica_pagini() {
     if (this->getter_pagini() < 0)
         throw numar_negativ_pagini(this->getter_pagini());
 }
+
+std::string ReadingTracker::getter_stare() {
+    return Tracker::getter_stare() + "yey";
+}

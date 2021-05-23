@@ -14,7 +14,7 @@ protected:
 public:
     Tracker(const std::string &nume, const std::string &stare);
     std::string getter_nume();
-    std::string getter_stare();
+    virtual std::string getter_stare()=0;
     void setter_nume(const std::string& n);
     virtual void setter_stare(const std::string& s)=0;  //functie pur virtuala
     friend bool operator==(const Tracker &track1, const Tracker &track2);

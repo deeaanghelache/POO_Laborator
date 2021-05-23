@@ -6,6 +6,7 @@
 
 void MoodTracker::setter_stare(const std::string &s) {
     stare = s;
+//    stare = Tracker::setter_stare(s);
 }
 
 std::ostream &operator<<(std::ostream &os, const MoodTracker &mt) {
@@ -14,3 +15,7 @@ std::ostream &operator<<(std::ostream &os, const MoodTracker &mt) {
 }
 
 MoodTracker::MoodTracker(const std::string &nume, const std::string &stare) : Tracker(nume, stare) {}
+
+std::string MoodTracker::getter_stare() {
+    return Tracker::getter_stare()+":)";
+}

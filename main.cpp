@@ -37,6 +37,11 @@ void try_catch_pagini(ReadingTracker &rt)
 
 int main()
 {
+
+//    TaskUrgent tu1;
+//    TaskMediu td1;
+//    TaskMinor tm1;
+
     auto PeoplePlanners = citire_persoane();
 
     int crt=0;
@@ -73,6 +78,10 @@ int main()
             ReadingTracker rt1("nume", "stare", -100);
             MoodTracker md1("nume", "stare");
 
+            ReadingTracker rt3("numeRt2", "stare_rt3", -200);
+            MoodTracker md3("numemd3", "stare_md3");
+
+
             try_catch_pagini(rt1);
 
 //            try{
@@ -95,6 +104,14 @@ int main()
 
             planner_1.add_backlog(backlog1);
             Persoana persoana_1(pers.first, planner_1);
+
+
+            std::vector<Tracker *> trackere_extra; //vector de pointeri
+            trackere_extra.push_back(&rt3);
+            trackere_extra.push_back(&md3);
+
+            for(auto &track : trackere_extra)
+                std::cout << track->getter_stare() << "\n";
 
             std::cout<<persoana_1;
 

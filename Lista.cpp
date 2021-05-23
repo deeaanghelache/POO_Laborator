@@ -96,6 +96,10 @@ void Lista::setter_md(MoodTracker &md1) {
     md = md1;
 }
 
+void Lista::progres(Tracker &tr) {
+    std::cout << "progresul: " << tr.getter_stare();
+}
+
 //Lista::Lista(const std::unique_ptr<Lista> &lista) {
 //    nume=lista->nume;
 //    data=lista->data;

@@ -10,7 +10,7 @@
 class MoodTracker : public Tracker {
 public:
     void setter_stare(const std::string &s) override;
-
+    std::string getter_stare() override;
     friend std::ostream &operator<<(std::ostream &os, const MoodTracker &rt);
 
     MoodTracker(const std::string &nume, const std::string &stare);
