@@ -31,6 +31,9 @@ public:
     void remove_lista(std::shared_ptr<Lista> &ToDoList);
     void remove_backlog(std::shared_ptr<Backlog> &backl);
     virtual ~Planner();
+
+//    bool operator==(const Planner &rhs) const;
+
     friend std::ostream &operator<<(std::ostream &os, const Planner &planner);
 
 };

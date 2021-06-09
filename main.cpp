@@ -11,6 +11,12 @@
 #include "ReadingTracker.h"
 #include "MoodTracker.h"
 #include "numar_negativ_pagini.h"
+#include "administratorAplicatie.h"
+
+template<class T> T afisare_pret_abonament(T pret){
+    std::cout<<"Pretul abonamentului este: "<< pret <<" lei";
+};
+
 
 std::ifstream Persoane("Persoane.in");
 
@@ -41,8 +47,13 @@ int main()
 //    TaskUrgent tu1;
 //    TaskMediu td1;
 //    TaskMinor tm1;
+//    administratorAplicatie ap;
 
     auto PeoplePlanners = citire_persoane();
+    std::ifstream in("plati.in");
+    int pret;
+
+    auto& administrator = administratorAplicatie::get_administrator();
 
     int crt=0;
     for (const auto& pers : PeoplePlanners)
@@ -56,6 +67,9 @@ int main()
         if(crt==1)
 
         {
+            in>>pret;
+//            std::cout<<pret;
+
             Planner planner_1(pers.second);
 
             std::shared_ptr<Task> task1 = std::make_shared<Task>("Tema Mate", "no");
@@ -103,7 +117,7 @@ int main()
             backlog1->add_task(task7);
 
             planner_1.add_backlog(backlog1);
-            Persoana persoana_1(pers.first, planner_1);
+            Persoana persoana_1(pers.first, planner_1, pret);
 
 
             std::vector<Tracker *> trackere_extra; //vector de pointeri
@@ -113,7 +127,18 @@ int main()
             for(auto &track : trackere_extra)
                 std::cout << track->getter_stare() << "\n";
 
-            std::cout<<persoana_1;
+            administrator.adauga_persoana(persoana_1);
+
+            if (a_platit(persoana_1))
+            {
+                std::cout<<persoana_1<<"\n";
+                afisare_pret_abonament(pret);
+            }
+            else
+            {
+                std::cout<<"Persoana nu a platit, i se suspenda abonamentul";
+                administrator.stergere_persoana(persoana_1);
+            }
 
             std::cout<<"\n";
         }
@@ -172,6 +197,8 @@ int main()
 //            operator<<(std::cout, persoana_5);
 //        }
     }
+
+    administrator.afisare_utilizatori_care_au_platit();
 
     Persoane.close();
     return 0;

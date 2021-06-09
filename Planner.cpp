@@ -66,3 +66,10 @@ std::vector<std::shared_ptr<Backlog>> Planner::getter_backlogs() {
     return Backlogs;
 }
 
+//bool Planner::operator==(const Planner &rhs) const {
+//    return nume == rhs.nume &&
+//           Liste == rhs.Liste &&
+//           Backlogs == rhs.Backlogs;
+//}
+
+
